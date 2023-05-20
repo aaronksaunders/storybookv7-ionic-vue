@@ -1,34 +1,37 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Blank</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+      <p>storybook vue</p>
+      <ionic-button label="button in component"></ionic-button>
+      <member-card :member-info="memberInfo" @social-clicked="doHandleClick"></member-card>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import IonicButton from "@/components/IonicButton.vue";
+import MemberCard, { MemberInfo } from "@/components/MemberCard.vue";
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/vue";
+
+const memberInfo: MemberInfo = {
+  title: "CEO",
+  bio: "this is a bio",
+  companyName: "CI Inc",
+  name: "Aaron Saunders",
+  twitter: "twitter/aaronksaunders",
+  linkedIn: "linkedIn/aaronksaunder",
+  website: "www.ci.com",
+};
+
+const doHandleClick = (value: string | undefined) => {
+  alert(value + " was clicked");
+};
 </script>
 
 <style scoped>
 #container {
   text-align: center;
-  
+
   position: absolute;
   left: 0;
   right: 0;
@@ -44,9 +47,9 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue
 #container p {
   font-size: 16px;
   line-height: 22px;
-  
+
   color: #8c8c8c;
-  
+
   margin: 0;
 }
 
